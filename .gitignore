@@ -1,0 +1,4 @@
+SPECIFICATIONS.md
+node_modules/
+.next/
+.env.local
