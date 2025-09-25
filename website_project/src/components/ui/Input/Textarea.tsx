@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+import clsx from 'clsx'
 import { TextareaProps } from './Input.types'
 
 export default forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -13,12 +14,14 @@ export default forwardRef<HTMLTextAreaElement, TextareaProps>(
     required = false,
     ...props
   }, ref) => {
-    const baseStyles = 'w-full rounded-lg border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900'
+    const baseStyles = 'w-full rounded-lg border transition-all duration-200 focus:outline-none'
 
     const variantStyles = {
-      default: 'bg-transparent border-gray-700 text-white placeholder-gray-400 focus:border-purple-500 focus-visible:ring-purple-500',
-      filled: 'bg-gray-800 border-gray-800 text-white placeholder-gray-400 focus:border-purple-500 focus-visible:ring-purple-500'
+      default: 'bg-transparent border-gray-700 text-white placeholder-gray-400',
+      filled: 'bg-gray-800 border-gray-800 text-white placeholder-gray-400'
     }
+
+    const focusStyles = 'focus:ring-0 focus:ring-offset-0 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 focus-visible:ring-purple-500'
 
     const sizeStyles = {
       sm: 'px-3 py-1.5 text-sm',
@@ -27,16 +30,17 @@ export default forwardRef<HTMLTextAreaElement, TextareaProps>(
     }
 
     const resizeStyles = resize ? 'resize-y' : 'resize-none'
-    const errorStyles = error ? 'border-red-500 focus:border-red-500 focus-visible:ring-red-500' : ''
+    const errorStyles = error ? 'border-red-500' : ''
 
-    const textareaClasses = [
+    const textareaClasses = clsx(
       baseStyles,
       variantStyles[variant],
       sizeStyles[size],
+      focusStyles,
       resizeStyles,
       errorStyles,
       className
-    ].join(' ')
+    )
 
     return (
       <div className="w-full">
