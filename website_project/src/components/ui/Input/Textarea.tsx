@@ -13,11 +13,11 @@ export default forwardRef<HTMLTextAreaElement, TextareaProps>(
     required = false,
     ...props
   }, ref) => {
-    const baseStyles = 'w-full rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900'
+    const baseStyles = 'w-full rounded-lg border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900'
 
     const variantStyles = {
-      default: 'bg-transparent border-gray-700 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500',
-      filled: 'bg-gray-800 border-gray-800 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500'
+      default: 'bg-transparent border-gray-700 text-white placeholder-gray-400 focus:border-purple-500 focus-visible:ring-purple-500',
+      filled: 'bg-gray-800 border-gray-800 text-white placeholder-gray-400 focus:border-purple-500 focus-visible:ring-purple-500'
     }
 
     const sizeStyles = {
@@ -27,7 +27,7 @@ export default forwardRef<HTMLTextAreaElement, TextareaProps>(
     }
 
     const resizeStyles = resize ? 'resize-y' : 'resize-none'
-    const errorStyles = error ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''
+    const errorStyles = error ? 'border-red-500 focus:border-red-500 focus-visible:ring-red-500' : ''
 
     const textareaClasses = [
       baseStyles,
