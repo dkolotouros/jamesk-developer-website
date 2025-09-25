@@ -100,17 +100,63 @@ Open [http://localhost:3000](http://localhost:3000) to view the website.
 ### Development Commands
 
 ```bash
-npm run dev        # Start development server
-npm run build      # Build for production
-npm run start      # Start production server
-npm run lint       # Run ESLint
-npm run lint:fix   # Fix linting issues
-npm run type-check # Run TypeScript checks
+# Development
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+
+# Code Quality
+npm run lint         # Run ESLint
+npm run lint:fix     # Fix linting issues
+npm run format       # Format code with Prettier
+npm run format:check # Check code formatting
+npm run type-check   # Run TypeScript checks
+
+# Testing
+npm run test         # Run tests
+npm run test:watch   # Run tests in watch mode
+npm run test:coverage # Run tests with coverage report
+npm run test:ci      # Run tests for CI (no watch, with coverage)
+
+# Quality Check (runs all checks)
+npm run quality      # Run type-check + lint + format:check + test:ci
 ```
+
+## ⚙️ Development Setup
+
+### Branch Protection Rules (Required for Contributors)
+
+To ensure code quality and prevent broken builds, set up branch protection rules:
+
+1. **Navigate to Repository Settings**:
+   - Go to your GitHub repository
+   - Click "Settings" tab → "Branches" in sidebar
+   - Click "Add rule" for `main` branch
+
+2. **Configure Protection Settings**:
+   - ✅ **Require a pull request before merging**
+   - ✅ **Require status checks to pass before merging**
+     - Required checks: `test (18.x)`, `test (20.x)`, `build-check`
+   - ✅ **Require conversation resolution before merging**
+   - ✅ **Include administrators** (applies rules to all users)
+
+3. **Testing Requirements**:
+   - All PRs must pass unit tests with 80%+ coverage
+   - TypeScript compilation must succeed
+   - Linting and formatting checks must pass
+   - Production build must complete successfully
+
+### Code Quality Standards
+- **Unit Testing**: Jest + React Testing Library with 80% coverage minimum
+- **Type Safety**: Strict TypeScript with no `any` types
+- **Code Style**: Prettier + ESLint with Next.js config
+- **Git Workflow**: Feature branches → PR → merge (no direct commits to main)
 
 ## 📖 Documentation
 
 For detailed project specifications, architecture decisions, and implementation guidelines, see [SPECIFICATIONS.md](./SPECIFICATIONS.md).
+
+Track current implementation progress in [PROGRESS.md](./PROGRESS.md).
 
 ## 🤝 Contributing
 
