@@ -40,11 +40,17 @@ body {
   }
 }
 
-/* Focus styles for accessibility */
+/* Focus styles for accessibility - keyboard navigation only 
 *:focus-visible {
-  outline: 2px solid #667eea;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px #a855f7;
   border-radius: 4px;
+}
+
+/* Explicitly remove focus rings on mouse interaction 
+*:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
 
 /* Custom scrollbar */
