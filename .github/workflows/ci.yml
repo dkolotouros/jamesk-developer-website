@@ -26,18 +26,23 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
+      working-directory: ./website_project
 
     - name: Run type checking
       run: npm run type-check
+      working-directory: ./website_project
 
     - name: Run linting
       run: npm run lint
+      working-directory: ./website_project
 
     - name: Run formatting check
       run: npm run format:check
+      working-directory: ./website_project
 
     - name: Run tests with coverage
       run: npm run test:ci
+      working-directory: ./website_project
 
     - name: Upload coverage reports
       if: matrix.node-version == '20.x'
@@ -50,6 +55,7 @@ jobs:
 
     - name: Build application
       run: npm run build
+      working-directory: ./website_project
 
   build-check:
     runs-on: ubuntu-latest
@@ -67,9 +73,11 @@ jobs:
 
     - name: Install dependencies
       run: npm ci
+      working-directory: ./website_project
 
     - name: Build for production
       run: npm run build
+      working-directory: ./website_project
 
     - name: Check build artifacts
       run: |
@@ -78,3 +86,4 @@ jobs:
           exit 1
         fi
         echo "Build successful!"
+      working-directory: ./website_project
