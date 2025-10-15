@@ -35,3 +35,40 @@
 ---
 
 *This demonstrates James's ability to identify process gaps and implement systematic improvements for better long-term outcomes*
+
+## Technical Decision Making: Implementation Plan Adherence (September 2025)
+
+**Skill/Topic**: Project management, technical decision making, scope management, risk assessment, implementation discipline
+
+**Context**: During useIntersectionObserver hook development, Claude suggested using Vitest over Jest for potential performance benefits. James recognized this as scope creep that could derail the established implementation plan.
+
+**Situation Analysis**:
+- Technical suggestion had merit (Vitest offers faster testing, better ESM support)
+- However, Jest was already configured and specified in SPECIFICATIONS.md Phase 8
+- Project was in active development with higher priority tasks pending
+- Inconsistent test imports were discovered (mixing Vitest/Jest imports)
+
+**Decision Framework Applied**:
+- **Plan consistency**: Prioritized adherence to established technical specifications
+- **Risk vs. benefit**: Weighed potential configuration issues and delays against benefits
+- **Timing consideration**: Recognized that mid-project tool changes introduce unnecessary complexity
+- **Future planning**: Acknowledged benefits while deferring to appropriate time
+
+**Professional Response**:
+> "veering off from our implementation plan at this stage in the project may cause issues and delays that will outweight the benefits it brings. At a later time I am happy to revisit this when we are finished with the higher priority tasks"
+
+**Key Skills Demonstrated**:
+- **Scope management**: Prevented scope creep during active development
+- **Technical prioritization**: Distinguished between "better" and "appropriate timing"
+- **Project discipline**: Maintained focus on established implementation plan
+- **Strategic thinking**: Planned for future consideration without disrupting current work
+- **Risk assessment**: Understood potential for configuration issues and delays
+- **Communication**: Clearly articulated reasoning and future planning
+
+**Implementation Approach**:
+- Acknowledged technical merit of alternative solution
+- Firmly redirected to planned approach
+- Established timeline for future consideration
+- Maintained positive collaborative relationship while enforcing boundaries
+
+**Keywords**: project management, scope management, technical decision making, implementation discipline, risk assessment, strategic planning, focus maintenance, plan adherence, timing considerations, professional communication

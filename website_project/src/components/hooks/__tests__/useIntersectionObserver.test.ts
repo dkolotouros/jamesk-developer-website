@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react'
 import useIntersectionObserver from '../useIntersectionObserver'
+import { jest, expect, beforeEach, afterEach, describe, it } from '@jest/globals'
 
 // Mock IntersectionObserver
 const mockObserve = jest.fn()
@@ -21,7 +22,7 @@ beforeEach(() => {
   mockObserve.mockClear()
   mockDisconnect.mockClear()
 
-  global.IntersectionObserver = jest.fn().mockImplementation(createMockIntersectionObserver)
+  global.IntersectionObserver = jest.fn().mockImplementation(createMockIntersectionObserver) as typeof IntersectionObserver
 })
 
 afterEach(() => {
@@ -198,7 +199,7 @@ describe('useIntersectionObserver', () => {
     // After becoming visible once, the observer should not be recreated
     // Reset the mock to track new calls
     mockDisconnect.mockClear()
-    global.IntersectionObserver = jest.fn().mockImplementation(createMockIntersectionObserver)
+    global.IntersectionObserver = jest.fn().mockImplementation(createMockIntersectionObserver) as typeof IntersectionObserver
 
     // Re-render should not create a new observer (frozen state)
     rerender()

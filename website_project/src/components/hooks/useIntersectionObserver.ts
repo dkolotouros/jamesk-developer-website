@@ -18,7 +18,7 @@ interface UseIntersectionObserverResult {
  */
 export default function useIntersectionObserver(
   options: UseIntersectionObserverOptions = {}
-): [RefObject<Element>, UseIntersectionObserverResult] {
+): [RefObject<Element | null>, UseIntersectionObserverResult] {
   const {
     threshold = 0,
     root = null,
@@ -26,7 +26,7 @@ export default function useIntersectionObserver(
     freezeOnceVisible = false,
   } = options
 
-  const elementRef = useRef<Element>(null)
+  const elementRef = useRef<Element | null>(null)
   const [entry, setEntry] = useState<IntersectionObserverEntry>()
   const [isIntersecting, setIsIntersecting] = useState(false)
 
