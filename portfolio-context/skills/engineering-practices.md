@@ -62,4 +62,65 @@
 
 ---
 
+## Performance-First Architecture: Challenging Specifications (September 2025)
+
+**Skill/Topic**: Performance engineering, Core Web Vitals, critical thinking, technical leadership, browser rendering optimization
+
+**Context**: During Phase 3 implementation, the SPECIFICATIONS.md called for a `useMediaQuery` hook for responsive design logic. James questioned whether JavaScript-based media queries were appropriate given the project's strict performance requirements (Lighthouse 95+, CLS < 0.1).
+
+**Critical Analysis**:
+- **Rendering pipeline understanding**: Recognized JavaScript runs later in browser waterfall
+- **Performance impact assessment**: Identified potential for rendering delays and layout shifts
+- **Alternative evaluation**: Assessed Tailwind CSS responsive utilities as CSS-only alternative
+- **Specification challenge**: Questioned whether spec requirement aligned with performance goals
+
+**Technical Concerns Identified**:
+1. **Hydration mismatches**: JavaScript-based responsive logic conflicts with SSR
+2. **Flash of incorrect content**: Delay before JS loads causes visual jumps
+3. **Layout shifts**: Dynamic rendering based on viewport affects CLS metrics
+4. **Delayed initial render**: JavaScript dependency blocks optimal first paint
+5. **Core Web Vitals impact**: Conflicts with CLS < 0.1 and Lighthouse 95+ targets
+
+**Decision Framework Applied**:
+- **Performance-first mindset**: Evaluated technical approach against Core Web Vitals goals
+- **CSS-first principle**: Prioritized CSS solutions over JavaScript when possible
+- **Specification questioning**: Challenged spec when it conflicted with project requirements
+- **Use case validation**: Confirmed no legitimate need existed that required JS-based media queries
+- **Alternative solutions**: Identified Tailwind responsive classes as superior approach
+
+**Professional Response**:
+> "Javascript typically runs later in the waterfall and this approach can cause rendering delays that will affect performance. Are we sure that for the use cases we're planning to use this for that this won't be an issue?"
+
+**Recommended Approach**:
+- **Skip useMediaQuery hook**: Removed unnecessary JavaScript dependency
+- **Use Tailwind exclusively**: Leverage `hidden md:block`, `lg:flex-row` patterns
+- **CSS-only solutions**: Grid/flexbox with responsive breakpoints
+- **Defer if needed**: Can add later if genuine JS use case emerges
+
+**Key Skills Demonstrated**:
+- **Performance engineering**: Deep understanding of browser rendering pipeline
+- **Core Web Vitals expertise**: CLS, FCP, LCP optimization knowledge
+- **Critical thinking**: Questioned specification when it conflicted with requirements
+- **Technical leadership**: Made architectural decisions based on performance data
+- **CSS mastery**: Recognized CSS capabilities vs JavaScript necessity
+- **Strategic prioritization**: Balanced features against performance impact
+- **Specification ownership**: Treated specs as guidelines, not immutable requirements
+
+**Impact**:
+- **Prevented performance regression**: Avoided unnecessary layout shifts and rendering delays
+- **Simplified architecture**: Reduced JavaScript bundle size and complexity
+- **Improved Core Web Vitals**: Maintained path to CLS < 0.1 target
+- **CSS-first approach**: Established pattern for performance-conscious development
+- **Cleaner codebase**: Removed unnecessary abstraction layer
+
+**Engineering Principles Applied**:
+- **YAGNI (You Aren't Gonna Need It)**: Challenged feature before implementation
+- **Performance budget**: Evaluated every feature against performance goals
+- **Progressive enhancement**: CSS-first with JavaScript only when truly needed
+- **Critical path optimization**: Avoided blocking rendering with unnecessary JS
+
+**Keywords**: performance engineering, core web vitals, cls optimization, browser rendering, critical thinking, technical leadership, specification management, css-first development, performance budgets, progressive enhancement, lighthouse optimization, strategic decision making, rendering pipeline, hydration, layout shifts
+
+---
+
 *Add more engineering practice examples here as they occur during development*
