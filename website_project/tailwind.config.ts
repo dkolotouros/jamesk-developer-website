@@ -106,6 +106,16 @@ const config: Config = {
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
+      boxShadow: {
+        'glow-primary': '0 0 20px rgba(102, 126, 234, 0.5)',
+        'glow-secondary': '0 0 20px rgba(240, 147, 251, 0.5)',
+        'glow-accent': '0 0 20px rgba(79, 172, 254, 0.5)',
+      },
+      dropShadow: {
+        'glow-primary': '0 0 8px rgba(102, 126, 234, 0.8)',
+        'glow-secondary': '0 0 8px rgba(240, 147, 251, 0.8)',
+        'glow-accent': '0 0 8px rgba(79, 172, 254, 0.8)',
+      },
     },
   },
   plugins: [],
