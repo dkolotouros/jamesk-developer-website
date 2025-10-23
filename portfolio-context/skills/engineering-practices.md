@@ -123,4 +123,85 @@
 
 ---
 
+## Architectural Thinking: Questioning Design Decisions Before Implementation (October 2025)
+
+**Skill/Topic**: Architectural awareness, DRY principles, code organization, continuous learning, quality standards
+
+**Context**: During Phase 4 (Enhanced Navigation) implementation, James paused before writing code to question where Tailwind utility classes should be defined - in the config file vs hardcoded in components. Rather than accepting the initial approach, James requested expert evaluation of the architectural decision.
+
+**Thoughtful Questions Asked**:
+> "Let's make sure we are using DRY coding principles. Let's make sure that any tailwind classes that will be reused are defined in the tailwind config file... From the point of view of a staff level developer or senior engineering manager, let me know if you agree with this."
+
+**Engineering Mindset Demonstrated**:
+- **Paused before coding**: Didn't rush to implementation
+- **Questioned the approach**: Challenged initial solution
+- **Sought expertise**: Asked for evaluation from experienced perspective
+- **Thought about scale**: Considered maintainability with 50+ components
+- **High standards**: Wanted to "do it right" not just "make it work"
+
+**Key Learning Applied**:
+
+**✅ Correctly Identified:**
+- Design tokens should be centralized (colors, shadows, spacing)
+- Hardcoded values like `from-[#667eea]` should be avoided
+- DRY principles matter for maintainability
+
+**✅ Learned Through Discussion:**
+- **Nuance**: Not all mappings belong in config
+- **Distinction**: Design tokens (config) vs business logic (components)
+- **Balance**: Avoiding "utility class soup" in config while staying DRY
+
+**Solution Implemented**:
+```typescript
+// Design tokens → Tailwind config
+boxShadow: {
+  'glow-primary': '0 0 20px rgba(102, 126, 234, 0.5)',
+}
+
+// Business logic → Component
+const THEME_CONFIG = {
+  primary: { gradient: 'from-primary-500', shadow: 'shadow-glow-primary' },
+}
+```
+
+**Component Architecture Question**:
+
+James then asked about extracting NavLink as a subcomponent:
+> "Let's set up a subcomponent for NavLink... From the same point of view of a staff level dev, do you agree with this approach or have any concerns?"
+
+**Benefits Identified:**
+- Single Responsibility Principle
+- Easier testing and iteration
+- Better code organization
+- Reusability across contexts
+
+**Implementation**:
+```
+Header/
+├── Header.tsx (292 lines)
+├── NavLink.tsx (136 lines - subcomponent)
+├── __tests__/ (comprehensive test coverage)
+└── index.ts
+```
+
+**Key Skills Demonstrated**:
+- **Architectural awareness**: Thinking about code organization and maintainability
+- **Quality focus**: Prioritizing clean architecture over speed
+- **Continuous learning**: Seeking expert perspectives on best practices
+- **Not accepting first solution**: "Do not write code yet just let me know if you agree"
+- **Implementation rigor**: After validation, built production-grade code (1,226 lines, 82 tests)
+
+**Growth Trajectory**:
+This demonstrates a **senior engineer mindset** - knowing when to pause and seek architectural guidance rather than rushing to implementation. The willingness to question approaches and learn patterns shows the path toward mastery.
+
+**Impact**:
+- **Clean architecture**: Proper separation of design tokens and business logic
+- **Modular design**: Reusable, testable NavLink subcomponent
+- **Production quality**: Comprehensive test coverage and documentation
+- **Team patterns**: Established clear guidelines for future components
+
+**Keywords**: architectural thinking, code organization, dry principles, continuous learning, quality standards, senior engineer mindset, component design, maintainability, best practices, technical growth, design systems, separation of concerns
+
+---
+
 *Add more engineering practice examples here as they occur during development*
